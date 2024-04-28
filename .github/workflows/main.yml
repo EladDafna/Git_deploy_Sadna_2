@@ -28,3 +28,4 @@ jobs:
             sudo systemctl enable apache2
             cd home
             pwd
+            ls -la
