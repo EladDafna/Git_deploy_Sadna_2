@@ -14,7 +14,12 @@ jobs:
     steps:
       - name: Checkout the files
         uses: actions/checkout@v2
-      - run: sudo cp index.html /home/ubuntu/index.html
+
+      - run: |
+          pwd
+          ls -la
+          sudo cp index.html /home/ubuntu/index.html
+
       - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
