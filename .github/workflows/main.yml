@@ -26,5 +26,6 @@ jobs:
             sudo apt-get install -y apache2
             sudo systemctl start apache2
             sudo systemctl enable apache2
-            sudo scp /home/runner/work/Git_deploy_Sadna_2/Git_deploy_Sadna_2/index.html ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/var/www/html
+            pwd
+            ls -la
 
