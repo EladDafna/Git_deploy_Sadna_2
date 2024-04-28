@@ -15,10 +15,13 @@ jobs:
       - name: Checkout the files
         uses: actions/checkout@v2
 
-      - run: |
-          pwd
-          ls -la
-          sudo cp index.html /home/ubuntu/index.html
+      - name: Deploy to Server 1
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.HOST_DNS }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: ${{ secrets.TARGET_DIR }}
 
       - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
@@ -31,7 +34,5 @@ jobs:
             sudo apt-get install -y apache2
             sudo systemctl start apache2
             sudo systemctl enable apache2
-            pwd
-            ls -la
-            
-
+            cd home
+            sudo mv index.html /var/www/html
