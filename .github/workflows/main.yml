@@ -12,6 +12,19 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Copy index.html to EC2
-      run: scp -i ${{ secrets.EC2_SSH_KEY }} index.html ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/home/ubuntu
+      
+    - name: Install SSH
+      run: sudo apt-get install -y openssh-client
+      
+    - name: SSH to EC2 and deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST_DNS }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          pwd
+          ls -la
+          sudo cp index.html home/ubuntu/var/www/html
+  
+          
