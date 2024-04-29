@@ -27,6 +27,11 @@ jobs:
         ls -la ~/.ssh
         pwd
       
+    - name: Copy file to EC2
+      run: scp -i ~/.ssh/${{ env.NAME_OF_PRIVATE_KEY }} . index.html ubuntu@3.96.54.15$:/home/ubuntu
+      # Replace 'path/to/local/file' with the local file path
+      # Replace '/path/to/remote/location' with the remote directory path on EC2 where you want to copy the file
+
     - name: SSH to EC2 and deploy
       uses: appleboy/ssh-action@master
       with:
