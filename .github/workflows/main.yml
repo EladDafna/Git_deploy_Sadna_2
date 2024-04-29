@@ -36,4 +36,5 @@ jobs:
         script: |
           pwd
           ls -la
-          sudo ssh -i ~/.ssh/${{ env.NAME_OF_PRIVATE_KEY }} ubuntu@${{ env.EC2_PUBLIC_IP }} 'sudo apt update && sudo apt install -y apache2'
+          sudo apt update sudo apt
+          install -y apache2
