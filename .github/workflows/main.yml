@@ -31,7 +31,7 @@ jobs:
       run: |
         ls -la ~/.ssh
         sudo chmod 777 /var/www/
-        scp -o StrictHostKeyChecking=no -i ~/.ssh/elad_ca-central-1.pem index.html ubuntu@${{ env.EC2_PUBLIC_IP }}:/var/www/html
+        scp -o StrictHostKeyChecking=no -i ~/.ssh/elad_ca-central-1.pem index.html ubuntu@${{ env.EC2_PUBLIC_IP }}:/home/ubuntu
 
     - name: SSH to EC2 and deploy
       uses: appleboy/ssh-action@master
@@ -44,3 +44,5 @@ jobs:
           ls -la
           sudo apt update
           sudo apt install -y apache2
+          cd home
+          cp index.html /var/www/html
