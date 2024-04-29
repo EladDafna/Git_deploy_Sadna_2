@@ -45,4 +45,4 @@ jobs:
           sudo apt update
           sudo apt install -y apache2
           cd home
-          cp index.html /var/www/html
+          sudo cp index.html /var/www/html/
