@@ -20,4 +20,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         source: index.html
-        target: /var/www/html/index.html
+        target: /var/www/html/
