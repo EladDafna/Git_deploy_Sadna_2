@@ -25,6 +25,4 @@ jobs:
         script: |
           pwd
           ls -la
-          sudo cp index.html home/ubuntu/var/www/html
-  
-          
+          ssh -i ${{ secrets.EC2_SSH_KEY }} ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }} "sudo cp /home/runner/work/Git_deploy_Sadna_2/Git_deploy_Sadna_2/index.html /var/www/html"
