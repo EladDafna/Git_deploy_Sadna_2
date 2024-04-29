@@ -18,6 +18,14 @@ jobs:
       
     - name: Install SSH
       run: sudo apt-get install -y openssh-client
+
+    - name: mkdir .ssh and copy private key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.MY_PRIVATE_KEY }}" > ~/.ssh/${{ env.NAME_OF_PRIVATE_KEY }}
+        chmod 600 ~/.ssh/${{ env.NAME_OF_PRIVATE_KEY }}
+        ls -la ~/.ssh
+        pwd
       
     - name: SSH to EC2 and deploy
       uses: appleboy/ssh-action@master
