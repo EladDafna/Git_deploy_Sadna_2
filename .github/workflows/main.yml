@@ -25,4 +25,5 @@ jobs:
         script: |
           pwd
           ls -la
+          cp index.html home/ubuntu/var/www/html
           
