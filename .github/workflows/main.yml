@@ -1,4 +1,6 @@
 name: Deploy to EC2
+env:
+  NAME_OF_PRIVATE_KEY: "elad_ca-central-1.pem"
 
 on:
   push:
@@ -15,6 +17,9 @@ jobs:
       
     - name: Install SSH
       run: sudo apt-get install -y openssh-client
+
+    - name: echo ssh key to the EC2
+      run: echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/${{ env.NAME_OF_PRIVATE_KEY }}
       
     - name: SSH to EC2 and deploy
       uses: appleboy/ssh-action@master
