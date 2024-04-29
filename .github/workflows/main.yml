@@ -46,3 +46,4 @@ jobs:
           sudo apt install -y apache2
           cd home
           sudo cp index.html /var/www/html/
+          sudo systemctl restart apache2
