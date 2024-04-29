@@ -20,7 +20,7 @@ jobs:
       - name: mkdir .ssh and copy private key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/${{ env.NAME_OF_PRIVATE_KEY }}
+          echo "${{ secrets.EC2_SSH_KEY }} > ~/.ssh/${{ env.NAME_OF_PRIVATE_KEY }}"
           chmod 600 ~/.ssh/${{ env.NAME_OF_PRIVATE_KEY }}
           ls -la ~/.ssh
           pwd
