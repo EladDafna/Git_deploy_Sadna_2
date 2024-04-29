@@ -29,9 +29,8 @@ jobs:
       
     - name: Copy file to EC2
       run: |
-        cat ~/.ssh/elad_ca-central-1.pem
-        scp -i ~/.ssh/elad_ca-central-1.pem index.html ubuntu@${{ env.EC2_PUBLIC_IP }}:/home/ubuntu/
-      # Replace 'index.html' with the appropriate file name and '/home/ubuntu/' with the desired directory path on EC2
+        ls -la ~/.ssh
+        scp -o StrictHostKeyChecking=no -i ~/.ssh/elad_ca-central-1.pem index.html ubuntu@${{ env.EC2_PUBLIC_IP }}:/home/ubuntu/
 
     - name: SSH to EC2 and deploy
       uses: appleboy/ssh-action@master
