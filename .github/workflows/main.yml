@@ -28,7 +28,9 @@ jobs:
         pwd
       
     - name: Copy file to EC2
-      run: scp -i ~/.ssh/$"{{ env.NAME_OF_PRIVATE_KEY }}" index.html ubuntu@${{ env.EC2_PUBLIC_IP }}:/home/ubuntu/
+      run: |
+        ls -la ~/.ssh
+        scp -i ~/.ssh/${{ env.NAME_OF_PRIVATE_KEY }} index.html ubuntu@${{ env.EC2_PUBLIC_IP }}:/home/ubuntu/
       # Replace 'index.html' with the appropriate file name and '/home/ubuntu/' with the desired directory path on EC2
 
     - name: SSH to EC2 and deploy
