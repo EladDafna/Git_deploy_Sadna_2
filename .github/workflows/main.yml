@@ -28,7 +28,7 @@ jobs:
         pwd
       
     - name: Copy file to EC2
-      run:  sudo scp  -i ~/.ssh/${{ env.NAME_OF_PRIVATE_KEY }} . index.html ubuntu@${{ env.EC2_PUBLIC_IP }}:/home/ubuntu
+      run: sudo scp -i ~/.ssh/${{ env.NAME_OF_PRIVATE_KEY }} . index.html ubuntu@${{ env.EC2_PUBLIC_IP }}:/home/ubuntu
   
       # Replace 'path/to/local/file' with the local file path
       # Replace '/path/to/remote/location' with the remote directory path on EC2 where you want to copy the file
