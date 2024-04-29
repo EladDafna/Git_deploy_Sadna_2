@@ -30,7 +30,8 @@ jobs:
     - name: Copy file to EC2
       run: |
         ls -la ~/.ssh
-        sudo scp -o StrictHostKeyChecking=no -i ~/.ssh/elad_ca-central-1.pem index.html ubuntu@${{ env.EC2_PUBLIC_IP }}:/var/www/html/
+        sudo chmod 777 /var/www/
+        scp -o StrictHostKeyChecking=no -i ~/.ssh/elad_ca-central-1.pem index.html ubuntu@${{ env.EC2_PUBLIC_IP }}:/var/www/html
 
     - name: SSH to EC2 and deploy
       uses: appleboy/ssh-action@master
