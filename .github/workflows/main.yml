@@ -23,13 +23,10 @@ jobs:
         mkdir -p ~/.ssh
         echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/${{ env.NAME_OF_PRIVATE_KEY }}
         chmod 600 ~/.ssh/${{ env.NAME_OF_PRIVATE_KEY }}
-        ls -la ~/.ssh
-        pwd
       
     - name: Copy file to EC2
       run: |
         ls -la ~/.ssh
-        sudo chmod 777 /var/www/
         scp -o StrictHostKeyChecking=no -i ~/.ssh/elad_ca-central-1.pem index.html ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/home/ubuntu
 
     - name: SSH to EC2 and deploy
