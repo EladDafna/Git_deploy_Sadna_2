@@ -27,19 +27,8 @@ jobs:
     - name: Copy file to EC2
       run: |
         ls -la ~/.ssh
-        sudo scp -o StrictHostKeyChecking=no -i ~/.ssh/elad_ca-central-1.pem index.html ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/var/www/html
+        sudo scp -o StrictHostKeyChecking=no -i ~/.ssh/elad_ca-central-1.pem index.html ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/home/ubuntu
+        cd home
+        sudo cp index.hmtl /var/www/html/
 
-    - name: SSH to EC2 and deploy
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST_DNS }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        script: |
-          pwd
-          ls -la
-          sudo apt update
-          sudo apt install -y apache2
-          cd home
-          sudo cp index.html /var/www/html/
-          sudo systemctl restart apache2
+   
