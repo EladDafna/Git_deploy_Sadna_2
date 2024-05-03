@@ -27,8 +27,6 @@ jobs:
     - name: Copy file to EC2
       run: |
         ls -la ~/.ssh
-        sudo scp -o StrictHostKeyChecking=no -i ~/.ssh/elad_ca-central-1.pem index.html ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/home/ubuntu
+        sudo scp -o StrictHostKeyChecking=no -i ~/.ssh/${{ env.NAME_OF_PRIVATE_KEY }} index.html ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/home/ubuntu
         cd ~
-        sudo cp index.hmtl /var/www/html/
-
-   
+        sudo cp ./index.html /var/www/html/
